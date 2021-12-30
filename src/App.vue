@@ -69,7 +69,7 @@ export default {
     responses: [
       {
         answer: 'A nearby town has many innocent lives in danger. Only you know how to stop the disaster.',
-        heroIds: [0, 20]
+        pointIds: [1, 20]
       },
       {
         answer: 'You heard your sibling has been imprisoned by a distant ruler.',
@@ -85,7 +85,15 @@ export default {
   },
   methods:{
     clickResponse(response){
-      console.log(response.heroIds)
+      const pointIds = response.pointIds
+      //for each pointIds, loop through heroes array and find the same id
+      
+
+      for(let i = 0; i < pointIds.length; i++){
+        this.heroes.find(hero => hero.id === pointIds[i]).points++
+
+      }
+
     }
   }
 }
