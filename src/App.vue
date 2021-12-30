@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <!-- <Question text="Welcome to Your Vue.js App"/> -->
-    <div>{{question}}</div>
+    <h2>{{question}}</h2>
     <div class="response-box">
       <div class="response" v-for="(response, index) in responses" :key="'response-' + index">
-        <div class="response--card" v-on:click="activeCard = !activeCard" :class="{activeCard: activeCard}">
+        <div class="response--card">
           <div class="response--card-art"></div>
           <div class="response--card-description">{{ response.answer }}</div>
         </div>
@@ -30,7 +30,6 @@ export default {
   data(){
     return {
     question: 'Which scenario is most likely to spur you into action?',
-    activeCard: false,
     heroes: [
       {id: 1, name: 'Bravo', points: 0},
       {id: 2, name: 'Dorinthea', points: 0}
@@ -61,11 +60,14 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+
 body{
-  background: red;
+  background: rgb(255, 249, 233);
+  
 }
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'EB Garamond', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -91,18 +93,17 @@ button{
   max-width: 180px;
   background: white;
   padding: 15px;
+  transition: all 0.2s;
+  border-radius: 4px;
+}
+
+.response--card:hover{
+  box-shadow: 0px 1px 20px 4px rgba(191,191,191,0.14);
+  cursor: pointer;
 }
 
 .response--card-art{
   min-height: 300px;
-}
-
-.response--card:hover{
-  box-shadow: 0px 1px 2px 6px rgba(191,191,191,0.14);
-  cursor: pointer;
-}
-
-.response--card.activeCard{
-  background: blue;
+  
 }
 </style>
