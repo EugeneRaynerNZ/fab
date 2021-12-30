@@ -17,7 +17,7 @@
       <div class="hero--points">
         <div class="hero--points-hero" v-for="hero in heroes" :key="hero.id">
           <p><strong>{{hero.name}}</strong></p>
-          <p>Points: {{hero.points}}</p>
+          <p>Points: <strong>{{hero.points}}</strong></p>
         </div>
       </div>
     </div>
@@ -69,16 +69,19 @@ export default {
     responses: [
       {
         answer: 'A nearby town has many innocent lives in danger. Only you know how to stop the disaster.',
-        pointIds: [1, 20]
+        pointIds: [2, 3, 9, 16, 17, 19, 20, 22]
       },
       {
         answer: 'You heard your sibling has been imprisoned by a distant ruler.',
+        pointIds: [1, 12]
       },
       {
-        answer: 'A reliable source has told you of a unique artifact. You know this artifact can enhance your abilities beyond comprehension.'
+        answer: 'A reliable source has told you of a unique artifact. You know this artifact can enhance your abilities beyond comprehension.',
+        pointIds: [5, 6, 7, 11, 15, 18, 23]
       },
       {
         answer: 'You have a tip-off for a hidden treasure that could make you incredibly wealthy.',
+        pointIds: [8, 14, 10, 10]
       },
     ]
     }
@@ -88,10 +91,8 @@ export default {
       const pointIds = response.pointIds
       //for each pointIds, loop through heroes array and find the same id
       
-
       for(let i = 0; i < pointIds.length; i++){
         this.heroes.find(hero => hero.id === pointIds[i]).points++
-
       }
 
     }
