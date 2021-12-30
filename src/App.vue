@@ -5,8 +5,9 @@
     <div class="response-box">
       <div class="response" v-for="(response, index) in responses" :key="'response-' + index">
         <div class="response--card">
-          <div class="response--card-art"></div>
+          <div class="response--card-art"><span style="font-size: 12px">Card art here</span></div>
           <div class="response--card-description">{{ response.answer }}</div>
+          <button class="response--card-button">Select</button>
         </div>
       </div>
     </div>
@@ -78,6 +79,15 @@ body{
 
 button{
   display: block;
+  background: grey;
+	color: white;
+	border: none;
+	padding: 12px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  width: 100%;
+  text-align: center;
 }
 
 .response-box{
@@ -90,9 +100,8 @@ button{
 
 .response--card{
   min-height: 400px;
-  max-width: 180px;
+  max-width: 200px;
   background: white;
-  padding: 15px;
   transition: all 0.2s;
   border-radius: 4px;
 }
@@ -104,6 +113,18 @@ button{
 
 .response--card-art{
   min-height: 300px;
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(191,191,191,0.4);
+}
+
+.response--card-art span{
+  padding: 0 10px;
+}
+
+.response--card-description{
+  padding: 12px;
+  min-height: 105px;
 }
 </style>
