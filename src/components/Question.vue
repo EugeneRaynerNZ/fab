@@ -18,30 +18,7 @@
 <script>
 export default {
     name: 'Question',
-    props: ['heroes'],
-    data(){
-        return {
-            question: 'Which scenario is most likely to spur you into action?',
-            responses: [
-                    {
-                        answer: 'A nearby town has many innocent lives in danger. Only you know how to stop the disaster.',
-                        pointIds: [2, 3, 9, 16, 17, 19, 20, 22]
-                    },
-                    {
-                        answer: 'You heard your sibling has been imprisoned by a distant ruler.',
-                        pointIds: [1, 12]
-                    },
-                    {
-                        answer: 'A reliable source has told you of a unique artifact. You know this artifact can enhance your abilities beyond comprehension.',
-                        pointIds: [5, 6, 7, 11, 15, 18, 23]
-                    },
-                    {
-                        answer: 'You have a tip-off for a hidden treasure that could make you incredibly wealthy.',
-                        pointIds: [8, 14, 10, 10]
-                    },
-                ]   
-        }
-    },
+    props: ['heroes', 'responses', 'question'],
     methods:{
         clickResponse(response){
             const pointIds = response.pointIds

@@ -1,14 +1,17 @@
 <template>
   <div id="app">    
-    <Question :heroes="heroes"/>
+    <Question 
+      v-for="question in questions" 
+      :key="question.question" 
+      :heroes="heroes" 
+      :responses="question.responses" 
+      :question="question.question"
+    />
 
-    <div>
-      <h4>For development purposes only</h4>
-      <div class="hero--points">
-        <div class="hero--points-hero" v-for="hero in heroes" :key="hero.id">
-          <p><strong>{{hero.name}}</strong></p>
-          <p>Points: <strong>{{hero.points}}</strong></p>
-        </div>
+    <div class="hero--points">
+      <div class="hero--points-hero" v-for="hero in heroes" :key="hero.id">
+        <p><strong>{{hero.name}}</strong></p>
+        <p>Points: <strong>{{hero.points}}</strong></p>
       </div>
     </div>
     
@@ -50,6 +53,50 @@ export default {
         {id: 22, name: 'Valda', points: 0},
         {id: 23, name: 'Shiyana', points: 0},
       ],
+      questions: [
+        {
+          question: 'Which scenario is most likely to spur you into action?', 
+          responses: [
+            {
+              answer: 'A nearby town has many innocent lives in danger. Only you know how to stop the disaster.',
+              pointIds: [2, 3, 9, 16, 17, 19, 20, 22]
+            },
+            {
+              answer: 'You heard your sibling has been imprisoned by a distant ruler.',
+              pointIds: [1, 12]
+            },
+            {
+              answer: 'A reliable source has told you of a unique artifact. You know this artifact can enhance your abilities beyond comprehension.',
+              pointIds: [5, 6, 7, 11, 15, 18, 23]
+            },
+            {
+              answer: 'You have a tip-off for a hidden treasure that could make you incredibly wealthy.',
+              pointIds: [8, 14, 10, 10]
+            },
+          ]
+        },
+        {
+          question: 'Which scenario is most likely to spur you into action?2312', 
+          responses: [
+            {
+              answer: 'A nearby town has many innocent lives in danger. Only you know how to stop the disaster.',
+              pointIds: [2, 3, 9, 16, 17, 19, 20, 22]
+            },
+            {
+              answer: 'You heard your sibling has been imprisoned by a distant ruler.',
+              pointIds: [1, 12]
+            },
+            {
+              answer: 'A reliable source has told you of a unique artifact. You know this artifact can enhance your abilities beyond comprehension.',
+              pointIds: [5, 6, 7, 11, 15, 18, 23]
+            },
+            {
+              answer: 'You have a tip-off for a hidden treasure that could make you incredibly wealthy.',
+              pointIds: [8, 14, 10, 10]
+            },
+          ]
+        }
+      ]
     }
   },
   
@@ -80,6 +127,11 @@ body{
   border: 1px solid blue;
   display: flex;
   flex-wrap: wrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 200px;
 }
 
 .hero--points-hero{
