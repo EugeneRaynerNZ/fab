@@ -1,5 +1,5 @@
 {
-  "name": "fab-quiz",
+  "name": "session-blood-quiz",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "gsap": "^3.7.0",
+    "prerender-spa-plugin": "^3.4.0",
     "vue": "^2.6.11"
   },
   "devDependencies": {

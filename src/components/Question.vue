@@ -1,26 +1,42 @@
 <template>
-    <div class="question">
-        <h2>{{question}}</h2>
-        <div class="response-box">
-            <div class="response" v-for="(response, index) in responses" :key="'response-' + index">
-                <div class="response--card" v-on:click="clickResponse(response)">
-                    <div class="response--card-art">
-                        <span style="font-size: 12px">Card art here</span>
+    <div class="question--master-box" style="z-index: 20;" :style="'z-index:' + zIndex" v-if="activeQuestion">
+      <div class="question--container" >
+        <p class="question-number">{{number + 1}} / 15</p>
+        <div class="question">
+          <img class="card--image" v-if="img" :src="img" alt="">
+          
+            <div class="question-title">
+              
+              <h2>{{question}}</h2>
+            </div>
+            <div class="response-box">
+                <div class="response" v-for="(response, index) in responses" :key="'response-' + index">
+                    <div class="response--card" v-on:click="chooseResponse(response)">
+                        <div class="response--card-description">{{ response.answer }}</div>
                     </div>
-                    <div class="response--card-description">{{ response.answer }}</div>
-                    <button class="response--card-button">Select</button>
                 </div>
             </div>
         </div>
+      </div>
     </div>
 </template>
 
 <script>
 export default {
     name: 'Question',
-    props: ['heroes', 'responses', 'question'],
+    props: ['heroes', 'responses', 'question', 'clicked', 'number', 'img'],
+    data(){
+      return {
+        activeQuestion: true
+      }
+    },
+    computed: {
+      zIndex(){
+        return 100 - this.number
+      }
+    },
     methods:{
-        clickResponse(response){
+        chooseResponse(response){
             const pointIds = response.pointIds
 
             if(!pointIds.length){
@@ -31,24 +47,57 @@ export default {
                 this.heroes.find(hero => hero.id === pointIds[i]).points++
             }
 
+            this.activeQuestion = false
+
         }
     }
 }
 </script>
 
 <style>
+.question--master-box{
+  height: 400px;
+  max-width: 900px;
+  width: 100%;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.question--container{
+  background: white;
+}
+
+.question-number{
+  text-align: left;
+}
+.question{
+  display: flex;
+}
+
+.card--image{
+  position: absolute;
+  bottom: 0;
+  width: 350px;
+}
+
 button{
-  display: block;
-  background: grey;
 	color: white;
 	border: 1px solid grey;
-	padding: 12px;
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
-  width: 100%;
   text-align: center;
   transition: all 0.2s;
+  padding: 0;
+  margin: 0;
+}
+
+button span{
+  line-height:1;
 }
 
 button:hover{
@@ -56,20 +105,35 @@ button:hover{
   color: grey;
 }
 
+
+
+
+
+.question-title{
+flex: 0 0 50%;
+text-align: left;
+font-size: 24px;
+}
+
 .response-box{
+  flex: 0 0 50%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   max-width: 900px;
   margin: 0 auto;
 }
 
 .response--card{
-  min-height: 400px;
-  max-width: 200px;
+  max-width: 100%;
   background: white;
   transition: all 0.2s;
   border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 12px;
 }
 
 .response--card:hover{
@@ -77,20 +141,19 @@ button:hover{
   cursor: pointer;
 }
 
-.response--card-art{
-  min-height: 300px;
-  display: flex;
+.response--card-description{
+  
+  text-align: left;
+  flex: 0 0 90%;
+}
+
+.response--card-button{
+    display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid rgba(191,191,191,0.4);
-}
-
-.response--card-art span{
-  padding: 0 10px;
-}
-
-.response--card-description{
-  padding: 12px;
-  min-height: 105px;
+  width: 20px;
+  height: 20px;
+  align-self: center;
+  color: red;
 }
 </style>
