@@ -26,6 +26,14 @@
 import Question from './components/Question.vue'
 import Image1 from './assets/question-1.jpg'
 import Image2 from './assets/question-2.jpg'
+import Image3 from './assets/question-3.jpg'
+import Image4 from './assets/question-4.jpg'
+import Image5 from './assets/question-5.jpg'
+import Image6 from './assets/question-6.jpg'
+import Image7 from './assets/question-7.jpg'
+import Image8 from './assets/question-8.jpg'
+// import Image9 from './assets/question-9.jpg'
+// import Image10 from './assets/question-10.jpg'
 
 export default { 
   name: 'App',
@@ -82,11 +90,11 @@ export default {
               pointIds: [8, 14, 10, 10]
             },
           ]
-        }, 
+        },
         {
           question: 'What would be your preferred weapon?', 
           clicked: false,
-           img: Image2,
+          img: Image2,
           responses: [
             {
               answer: 'Something light and agile. You want to kill your foes swiftly.',
@@ -102,6 +110,125 @@ export default {
             },
           ]
         },
+        {
+          question: 'You see some strangers up ahead. Do you:', 
+          clicked: false,
+          img: Image3,
+          responses: [
+            {
+              answer: 'Ignore them and hide. There is no point drawing attention to yourself.',
+              pointIds: [1, 4, 5, 8, 11, 13, 18]
+            },
+            {
+              answer: 'Eye them up and engage only if you think they can further your cause.',
+              pointIds: [3, 7, 9, 10, 12, 14, 15, 16, 20, 21, 23]
+            },
+            {
+              answer: 'Jump right into a conversation. A stranger can be made into a friend with a single chat.',
+              pointIds: [2, 6, 17, 19, 22]
+            },
+          ]
+        },
+        {
+          question: 'You see a raging storm heading your way. To make matters worse, you notice a group of bandits about to pull a sneak attack on you. How do you approach the situation?', 
+          clicked: false,
+          img: Image4,
+          responses: [
+            {
+              answer: 'You have planned for any circumstance. You’ve been preparing for battle and you’ve been preparing for extreme weather conditions. You know you’ll be fine.',
+              pointIds: [3, 8, 9, 11, 12, 14, 16, 20, 23]
+            },
+            {
+              answer: 'Your ability to adapt will shine here. This is nothing compared to what life has already thrown your way.',
+              pointIds: [1, 2, 4, 4, 5, 15, 18, 21]
+            },
+            {
+              answer: 'This sounds like chaos and you thrive in chaos. The thought of the storm hitting your foes brings a smile to your face. ',
+              pointIds: [6, 7, 10, 13, 13, 17, 19, 22]
+            },
+          ]
+        },
+        {
+          question: 'How do you approach combat?', 
+          clicked: false,
+          img: Image5,
+          responses: [
+            {
+              answer: 'Pure instinct guides your decisions. Switching off your mind and following the movements of your body gives you the best results.',
+              pointIds: [1, 2, 3, 4, 9, 13, 17, 18, 21, 22]
+            },
+            {
+              answer: 'Combat is about well thought out tactics. Superior strategy makes a fighter victorious. ',
+              pointIds: [5, 10, 12, 14, 15, 20, 23]
+            },
+            {
+              answer: 'You rely on long range in combat. Having the distance keeps you alive.',
+              pointIds: [6, 7, 8, 11, 16, 19]
+            },
+          ]
+        },
+        {
+          question: 'After a long battle, you stop by a small village on your way back home. The first place you visit is:', 
+          clicked: false,
+          img: Image6,
+          responses: [
+            {
+              answer: 'The Tavern. As a cold drink and banter is the only choice after a bloody skirmish. ',
+              pointIds: [2, 6, 10, 17, 19, 22]
+            },
+            {
+              answer: 'The Armoury. As a sharp blade or enforced steel guarantees your survival. ',
+              pointIds: [1, 3, 5, 8, 9, 12, 14, 20]
+            },
+            {
+              answer: 'The Seer’s Hut. Seeking wisdom from elders is of utmost importance. ',
+              pointIds: [7, 15, 16, 21, 23]
+            },
+          ]
+        },
+        {
+          question: 'You just lost a family heirloom. How important is such an object to you?', 
+          clicked: false,
+          img: Image7,
+          responses: [
+            {
+              answer: 'You are your roots. Knowing and honouring the past, you know where to head in the future. ',
+              pointIds: [1, 2, 9, 12, 14, 16, 17, 19, 20, 21]
+            },
+            {
+              answer: 'If the artifact had no inherent powers, it is useless to you. ',
+              pointIds: [5, 7, 8, 10, 15, 18, 23]
+            },
+            {
+              answer: 'You would rather focus on writing your own path than dwell on the past.',
+              pointIds: [3, 6, 11, 22]
+            },
+          ]
+        },
+        {
+          question: 'What is your preferred time to travel?', 
+          clicked: false,
+          img: Image8,
+          responses: [
+            {
+              answer: 'Daytime. You can clearly see any foes and obstacles in your path.',
+              pointIds: [2, 3, 6, 12, 14, 16, 17, 19, 22]
+            },
+            {
+              answer: 'Nighttime. Everyone’s asleep, so no running into trivial encounters.',
+              pointIds: [4, 4, 8, 18, 18]
+            },
+            {
+              answer: 'You don’t care, as reaching your destination is the only thing that matters. ',
+              pointIds: [1, 5, 11, 11, 15, 23]
+            },
+            {
+              answer: 'Travel? You are very content where you are. Only an extraordinary event would get you moving. ',
+              pointIds: [7, 9, 10, 13, 13, 20, 21]
+            },
+          ]
+        },
+
         
       ]
     }
