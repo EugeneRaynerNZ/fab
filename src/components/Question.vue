@@ -1,13 +1,13 @@
 <template>
-    <div class="question--master-box" style="z-index: 20;" :style="'z-index:' + zIndex" v-if="activeQuestion">
+    <div ref="block" class="question--master-box" style="z-index: 20;" :style="'z-index:' + zIndex" v-if="activeQuestion">
       <img class="card--image" v-if="img" :src="img" alt="">
       <div class="question--container" >
-        <p class="question-number">{{number + 1}} / 15</p>
+        <p class="question-number animation-1">{{number + 1}} / 15</p>
         <div class="question">
-            <div class="question-title">
+            <div class="question-title animation-2">
               <h2>{{question}}</h2>
             </div>
-            <div class="response-box">
+            <div class="response-box animation-3">
                 <div class="response" v-for="(response, index) in responses" :key="'response-' + index">
                     <div class="response--card" v-on:click="chooseResponse(response)">
                         <div class="response--card-description">{{ response.answer }}</div>
@@ -20,9 +20,18 @@
 </template>
 
 <script>
+import { gsap } from "gsap";
+
 export default {
     name: 'Question',
-    props: ['heroes', 'responses', 'question', 'clicked', 'number', 'img'],
+    props: {
+      heroes: Array,
+      responses: Array, 
+      question: String,
+      clicked: Boolean,
+      number: Number,
+      img: String,
+    },
     data(){
       return {
         activeQuestion: true
@@ -45,10 +54,31 @@ export default {
                 this.heroes.find(hero => hero.id === pointIds[i]).points++
             }
 
-            this.activeQuestion = false
+            this.activateExitAnimation()
 
-        }
-    }
+        },
+        activateExitAnimation(){
+          // fix was to get the block ref and then get it's elements
+          const { block } = this.$refs
+          
+          //element
+          // const animation1 = block.getElementsByClassName("animation-1")
+          // const animation2 = block.getElementsByClassName("animation-2")
+          // const animation3 = block.getElementsByClassName("animation-3")
+
+          const testImg = block.getElementsByClassName("card--image")
+          const testQuestion = block.getElementsByClassName("question--container") 
+
+          gsap.timeline().to([testImg, testQuestion], {y: -100, opacity: 0, duration:0.4})
+
+          // gsap.timeline()
+          // .to(animation1, {x: -100, opacity: 0, duration:0.6})
+          // .to(animation2, {opacity: 0, duration:0.6})
+          // .to(animation3, {opacity: 0, duration:0.6})
+
+          setTimeout(() => {this.activeQuestion = false}, 400);
+        },
+    },
 }
 </script>
 
