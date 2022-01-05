@@ -1,12 +1,10 @@
 <template>
     <div class="question--master-box" style="z-index: 20;" :style="'z-index:' + zIndex" v-if="activeQuestion">
+      <img class="card--image" v-if="img" :src="img" alt="">
       <div class="question--container" >
         <p class="question-number">{{number + 1}} / 15</p>
         <div class="question">
-          <img class="card--image" v-if="img" :src="img" alt="">
-          
             <div class="question-title">
-              
               <h2>{{question}}</h2>
             </div>
             <div class="response-box">
@@ -56,19 +54,21 @@ export default {
 
 <style>
 .question--master-box{
-  height: 400px;
+  height: 100vh;
   max-width: 900px;
   width: 100%;
+  position: relative;
+  margin: 0 auto;
+}
+
+.question--container{
+  height: 400px;
   position: absolute;
   margin: auto;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-}
-
-.question--container{
-  background: white;
 }
 
 .question-number{
@@ -82,6 +82,8 @@ export default {
   position: absolute;
   bottom: 0;
   width: 350px;
+  left: 0;
+  width: 400px;
 }
 
 button{
